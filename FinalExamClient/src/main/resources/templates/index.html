@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Husky Air Reservation</title>
+    </head>
+<body>
+    <div class="container">
+        <h1>Fill your Details</h1>
+        
+        <form th:action="@{/reserve}" th:object="${reservation}" method="post">
+            
+            <label>First Name</label>
+            <input type="text" th:field="*{firstName}" required /> <br/>
+
+            <label>Last Name</label>
+            <input type="text" th:field="*{lastName}" required /> <br/>
+
+            <label>No. Of Passengers</label>
+            <select th:field="*{numberOfPassengers}">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+            </select> <br/>
+
+            <label>Select Your Class</label>
+            <select th:field="*{travelClass}">
+                <option value="Economy">Economy class</option>
+                <option value="Business">Business class</option>
+            </select> <br/>
+
+            <label>Phone Number</label>
+            <input type="text" th:field="*{phoneNumber}" /> <br/>
+
+            <label>Time</label>
+            <input type="text" th:field="*{time}" /> <br/>
+
+            <label>Date of Departing</label>
+            <input type="date" th:field="*{dateOfDeparting}" /> <br/>
+
+            <button type="submit">Next</button> </form>
+    </div>
+</body>
+</html>
