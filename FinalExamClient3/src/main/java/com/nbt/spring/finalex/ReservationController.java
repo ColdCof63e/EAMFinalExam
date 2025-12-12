@@ -3,7 +3,9 @@ package com.nbt.spring.finalex;
 import java.io.File;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -13,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 
-@RestController
+@Controller
 public class ReservationController {
 	
 	@Autowired
@@ -22,7 +24,7 @@ public class ReservationController {
 	@RequestMapping("/")
 	public String home(Model model) {
 		model.addAttribute("reservation", new Reservation());
-		return "Home";
+		return "index";
 	}
 	
 	@PostMapping("/reserve")
@@ -37,7 +39,6 @@ public class ReservationController {
 			) {
 		
 		ObjectMapper om = new ObjectMapper();
-		
 		Reservation reservation = new Reservation(firstName,
 				lastName,
 				Integer.parseInt(numberOfPassengers),
